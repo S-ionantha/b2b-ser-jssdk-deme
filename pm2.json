@@ -1,0 +1,28 @@
+{
+    "apps": [
+        {
+            "name": "b2b-ser-jssdk-deme",
+            "script": "npm",
+            "cwd": "./",
+            "args": "start",
+            "interpreter": "",
+            "interpreter_args": "",
+            "watch": true,
+            "ignore_watch": [
+                "node_modules",
+                "logs"
+            ],
+            "exec_mode": "cluster_mode",
+            "instances": 1,
+            "max_memory_restart": 4,
+            "error_file": "./logs/app-err.log",
+            "out_file": "./logs/app-out.log",
+            "merge_logs": true,
+            "log_date_format": "YYYY-MM-DD HH:mm:ss",
+            "min_uptime": "60s",
+            "max_restarts": 30,
+            "autorestart": true,
+            "restart_delay": 60
+        }
+    ]
+}

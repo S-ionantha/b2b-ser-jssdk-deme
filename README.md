@@ -1,4 +1,4 @@
-# b2b-ser--jssdk-deme
+# b2b-ser-jssdk-deme
 
 #### 介绍
 {**以下是 Gitee 平台说明，您可以替换此简介**
