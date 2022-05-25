@@ -3,7 +3,7 @@
  * @author: sunziwen(sunziwen@baidu.com)
  */
 
-import fs from 'fs';
+const fs = require('fs');
 
 let list = [];
 let PATH = './routes';
@@ -22,12 +22,11 @@ const setRouter = (filePath, basePath, routerPath) => {
         if (reg.test(file) && file !== 'routes.js') {
             file = file.replace(/\.js$/, '');
             list.push(routerObj(file, basePath, routerPath + file));
-        }
-        else if (!reg.test(file)) {
+        } else if (!reg.test(file)) {
             setRouter(filePath + file, basePath + file, routerPath + file);
         }
     });
 };
 setRouter(PATH, '/', '/');
 
-export default list;
+module.exports = list;
