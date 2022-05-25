@@ -13,8 +13,8 @@
     </head>
     <body>
         <script>
-            window.acgAppSdk.refreshTicket()
-            console.log(window.acgAppSdk.refreshTicket)
+            let data = await window.acgAppSdk.refreshTicket()
+            console.log(data, window.acgAppSdk.refreshTicket)
         </script>
     </body>
 </html>
