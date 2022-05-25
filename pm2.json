@@ -2,7 +2,7 @@
     "apps": [
         {
             "name": "b2b-ser-jssdk-deme",
-            "script": "bin/www",
+            "script": "cross-env NODE_ENV=production node bin/www",
             "cwd": "./",
             "watch": [
                 "*"
