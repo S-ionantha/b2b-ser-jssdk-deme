@@ -13,7 +13,11 @@
     </head>
     <body>
         <script>
-            let data = await window.acgAppSdk.refreshTicket()
+            window.acgAppSdk.refreshTicket(null, {
+                success: (data) =>{
+                    console.log(data)
+                }
+            })
             console.log(data, window.acgAppSdk.refreshTicket)
         </script>
     </body>
