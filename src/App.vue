@@ -1,15 +1,20 @@
 <template>
     <div>
         编辑功能
-        <div
-            ref="code"
-            class="code"
-        ></div>
-
-        <div
-            ref="res"
-            class="code"
-        ></div>
+        <div class="code-area">
+            <div
+                ref="code"
+                class="code"
+            ></div>
+            <el-button
+                type="primary"
+                @click="runCode"
+            >运行</el-button>
+            <div
+                ref="res"
+                class="res"
+            ></div>
+        </div>
 
     </div>
 </template>
@@ -46,11 +51,21 @@ export default {
 
         // this.$refs.res.innerHTML = this.editor.getValue()
     },
-    method: {},
+    methods: {
+        runCode() {
+            console.log('this.editor.getValue()');
+            // console.log(this.editor.getValue());
+            console.log(this.$refs.code.innerText);
+            console.log(eval(this.$refs.code.innerText))
+        },
+    },
 };
 </script>
 
 <style>
+.code-area {
+    display: flex;
+}
 .code {
     border: 1px solid black;
     width: 500px;
