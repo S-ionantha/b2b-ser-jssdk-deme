@@ -112,11 +112,13 @@ export default {
         },
 
         async getList() {
-            let { ticket } = await window.acgAppSdk.refreshTicket();
+            let { data } = await window.acgAppSdk.refreshTicket();
             // https://app.ionantha.tech
-            let { data } = await axios.get(`/api/list?ticket=${ticket}`);
-            console.log(data);
-            print(data);
+            let { data: list } = await axios.get(
+                `/api/list?ticket=${data.ticket}`
+            );
+            console.log(list);
+            print(list);
         },
     },
 };
