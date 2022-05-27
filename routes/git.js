@@ -12,14 +12,15 @@ router.post('/WebHook', async (req, res) => {
 
     const data = req.body;
     if (data.password === 'WebHook') {
-        try {
-            await execSync('npm install');
-            await execSync('git pull');
-            await execSync('pm2 restart b2b-ser-jssdk-deme');
-            res.json({status: 0, statusText: 'success'});
-        } catch (error) {
-            res.json({status: 1, statusText: error});
-        }
+        let pull = await execSync('git pull');
+        console.log(pull);
+        let install = await execSync('npm install');
+        console.log(install);
+        let build = await execSync('npm run build');
+        console.log(build);
+        res.json({status: 0, statusText: 'success'});
+        console.log('restart');
+        await execSync('pm2 restart b2b-ser-jssdk-deme');
     }
     res.json({status: 1, statusText: 'error password'});
 });

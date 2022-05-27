@@ -126,4 +126,7 @@ export default {
     height: 300px;
     white-space: pre-wrap;
 }
+.res {
+    overflow: scroll;
+}
 </style>

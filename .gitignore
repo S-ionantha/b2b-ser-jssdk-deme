@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
 logs
-# /dist
+/dist
 
 
 # local env files

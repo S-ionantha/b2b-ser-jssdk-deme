@@ -4,13 +4,12 @@
             "name": "b2b-ser-jssdk-deme",
             "script": "cross-env NODE_ENV=production node bin/www",
             "cwd": "./",
-            "watch": [
-                "*"
-            ],
+            "watch": false,
             "ignore_watch": [
                 "node_modules",
                 "logs",
-                "public"
+                "public",
+                "dist"
             ],
             "max_memory_restart": "1000M",
             "max_restarts": 15,
