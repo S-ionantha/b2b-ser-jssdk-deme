@@ -23,7 +23,7 @@ router.get('/list', async (req, res) => {
     }
 
     let {data: list} = await axios.get(
-        `https://openapi.baidu.com/rest/2.0/b2b_tp/goods/list?app_id=172&access_token=${access_token}&ticket=${query.ticket}`
+        `https://openapi.baidu.com/rest/2.0/b2b_tp/offline/goods/list?app_id=172&access_token=${access_token}&ticket=${query.ticket}`
     );
 
     res.json({
