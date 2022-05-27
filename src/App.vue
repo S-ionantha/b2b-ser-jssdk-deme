@@ -35,8 +35,11 @@
             ></div>
         </div>
 
-        商品展示 
-        <el-button :icon="Search" circle @click="getList" />
+        商品展示
+        <el-button
+            type="primary"
+            @click="getList"
+        >获取商品展示列表</el-button>
 
     </div>
 </template>
@@ -109,11 +112,12 @@ export default {
         },
 
         async getList() {
-            let {ticket} = await window.acgAppSdk.refreshTicket()
-            let data = await axios(`https://app.ionantha.tech/api/list?ticket=${ticket}`)
-            console.log(data)
-            print(data)
-        }
+            let { ticket } = await window.acgAppSdk.refreshTicket();
+            // https://app.ionantha.tech
+            let { data } = await axios.get(`/api/list?ticket=${ticket}`);
+            console.log(data);
+            print(data);
+        },
     },
 };
 </script>
