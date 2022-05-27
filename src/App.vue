@@ -113,10 +113,10 @@ export default {
 
         async getList() {
             let { data } = await window.acgAppSdk.refreshTicket();
-            console.log(data.data)
+            console.log(data)
             // https://app.ionantha.tech
             let { data: list } = await axios.get(
-                `/api/list?ticket=${data.data.ticket}`
+                `/api/list?ticket=${data.ticket}`
             );
             console.log(list);
             print(list);
