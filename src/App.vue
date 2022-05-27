@@ -41,7 +41,7 @@ export default {
     data() {
         return {
             editor: null,
-            code: '', //"// 用于存储输出值\nlet print;\n\n",
+            code: "", //"// 用于存储输出值\nlet print;\n\n",
             options: {
                 theme: "vs",
                 selectOnLineNumbers: false,
@@ -92,8 +92,9 @@ export default {
         // console.log(this.editor.getValue());
         // this.$refs.res.innerHTML = this.editor.getValue()
         window.print = (data) => {
-            this.$refs.res.innerHTML = data;
-        }
+            this.$refs.res.innerHTML =
+                typeof data === "object" ? JSON.stringify(data, null, 4) : data;
+        };
     },
     methods: {
         runCode() {
@@ -104,7 +105,7 @@ export default {
         },
         onMounted(editor) {
             this.editor = editor;
-            this.editor.setValue(this.refreshTicket.join('\n'))
+            this.editor.setValue(this.refreshTicket.join("\n"));
         },
 
         onCodeChange(editor) {

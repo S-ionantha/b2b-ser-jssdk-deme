@@ -30,8 +30,6 @@ router.get('/list', async (req, res) => {
         status: 0,
         data: list
     });
-
-    // 
 });
 
 module.exports = router;
