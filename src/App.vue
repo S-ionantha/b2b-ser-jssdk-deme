@@ -1,6 +1,6 @@
 <template>
     <div>
-        编辑功能
+        SDK功能展示
         <div class="code-area">
             <!-- <div
                 ref="code"
@@ -14,25 +14,36 @@
                 language="javascript"
                 :code="code"
                 :editorOptions="options"
-                @mounted="onMounted"
+                @mounted="initEditor"
                 @codeChange="onCodeChange"
             >
             </MonacoEditor>
-            <el-button
-                type="primary"
-                @click="runCode"
-            >运行</el-button>
+            <div>
+                <el-button
+                    type="primary"
+                    @click="runCode"
+                >运行</el-button>
+                <el-button
+                    type="primary"
+                    @click="clean"
+                >清空</el-button>
+            </div>
+
             <div
                 ref="res"
                 class="res code"
             ></div>
         </div>
 
+        商品展示 
+        <el-button :icon="Search" circle @click="getList" />
+
     </div>
 </template>
 
 <script>
 import MonacoEditor from "vue-monaco-editor";
+import axios from "axios";
 export default {
     name: "App",
     components: {
@@ -72,25 +83,6 @@ export default {
         };
     },
     mounted() {
-        // this.editor = monaco.editor.create(this.$refs.code, {
-        //     value: this.code,
-        //     language: "javascript",
-        //     lineNumbers: false,
-        //     lineHeight: 20, // 行高
-        //     tabSize: 4, // 缩进
-        //     overviewRulerBorder: false,
-        //     overviewRulerLanes: false,
-        //     theme: "vs-dark",
-        //     minimap: {
-        //         // 关闭代码缩略图
-        //         enabled: false, // 是否启⽤预览图
-        //     },
-        //     fontSize: "14px",
-        //     autoIndent: true,
-        // });
-        // let data = eval(this.code);
-        // console.log(this.editor.getValue());
-        // this.$refs.res.innerHTML = this.editor.getValue()
         window.print = (data) => {
             this.$refs.res.innerHTML =
                 typeof data === "object" ? JSON.stringify(data, null, 4) : data;
@@ -101,9 +93,13 @@ export default {
             let newCode = `${this.editor.getValue()}`;
             let res = eval(newCode);
             console.log(res);
-            // this.$refs.res.innerHTML = res;
         },
-        onMounted(editor) {
+
+        clean() {
+            this.$refs.res.innerHTML = "";
+        },
+
+        initEditor(editor) {
             this.editor = editor;
             this.editor.setValue(this.refreshTicket.join("\n"));
         },
@@ -111,6 +107,13 @@ export default {
         onCodeChange(editor) {
             console.log(editor.getValue());
         },
+
+        async getList() {
+            let {ticket} = await window.acgAppSdk.refreshTicket()
+            let data = await axios(`https://app.ionantha.tech/api/list?ticket=${ticket}`)
+            console.log(data)
+            print(data)
+        }
     },
 };
 </script>
