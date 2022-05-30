@@ -14,7 +14,7 @@
             >
                 <el-card :body-style="{ padding: '0px' }">
                     <img
-                        :src="item.pc_url"
+                        :src="item.canonicalImage"
                         class="image"
                     />
                     <div style="padding: 14px">
