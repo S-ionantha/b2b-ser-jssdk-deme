@@ -57,13 +57,10 @@ export default {
                 data = error;
             }
 
-            console.log(document.referrer)
-            
-            let url = window.location.search;
-
-            let params = new URLSearchParams(url.substring(1));
+            let params = new URLSearchParams(window.location.search.substring(1));
 
             console.log(params.get("env"));
+            let env = params.get("env") 
 
             // https://app.ionantha.tech
             let { data: list } = await axios({
@@ -71,7 +68,7 @@ export default {
                 method: "get",
                 params: {
                     ticket: data.ticket,
-                    env: params.get("env"),
+                    env: env,
                 },
             });
 
