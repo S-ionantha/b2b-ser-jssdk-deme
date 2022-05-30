@@ -85,17 +85,24 @@ export default {
             ],
         };
     },
-    mounted() {
-        window.print = (data) => {
-            this.$refs.res.innerHTML =
-                typeof data === "object" ? JSON.stringify(data, null, 4) : data;
-        };
+    created() {
+        this.rewritePrint();
     },
     methods: {
+        rewritePrint() {
+            window.print = (data) => {
+                this.$refs.res.innerHTML =
+                    typeof data === "object"
+                        ? JSON.stringify(data, null, 4)
+                        : data;
+            };
+        },
+        
         runCode() {
+            this.$refs.res.innerHTML = '运行中...'
             let newCode = `${this.editor.getValue()}`;
             let res = eval(newCode);
-            console.log(res);
+            console.log(res)
         },
 
         clean() {
@@ -113,7 +120,7 @@ export default {
 
         async getList() {
             let { data } = await window.acgAppSdk.refreshTicket();
-            console.log(data)
+            console.log(data);
             // https://app.ionantha.tech
             let { data: list } = await axios.get(
                 `/api/list?ticket=${data.ticket}`
