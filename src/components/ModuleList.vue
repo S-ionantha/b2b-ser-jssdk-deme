@@ -132,6 +132,7 @@ h3 {
     font-size: 14px;
 }
 .name {
+    width: 231px;
     font-weight: 500;
     margin-top: 4px;
     line-height: 22px;
