@@ -99,7 +99,14 @@ export default {
                 "}",
                 "refreshTicket();",
             ],
-            refreshTicketSync: [],
+            refreshTicketSync: [
+                "async function refreshTicket() {",
+                "    let data = await window.acgAppSdk.refreshTicket()",
+                "    print(data);",
+                "    return data;",
+                "}",
+                "refreshTicket();",
+            ],
         };
     },
     created() {
@@ -113,6 +120,11 @@ export default {
                         ? JSON.stringify(data, null, 4)
                         : data;
             };
+        },
+
+        resetEditor(key) {
+            this.editor.setValue(this[key].join("\n"));
+            this.clean();
         },
 
         runCode() {
