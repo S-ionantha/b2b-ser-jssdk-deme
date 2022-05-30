@@ -1,11 +1,18 @@
 <template>
     <div>
-        SDK功能展示
+        <h3>SDK功能展示</h3>
+        <div class="module-list">
+            <el-button
+                type="primary"
+                @click="resetEditor('refreshTicket')"
+            >刷新ticket(异步)</el-button>
+            <el-button
+                type="primary"
+                @click="resetEditor('refreshTicketSync')"
+            >刷新ticket(同步)</el-button>
+        </div>
+
         <div class="code-area">
-            <!-- <div
-                ref="code"
-                class="code"
-            ></div> -->
             <MonacoEditor
                 height="300"
                 width="500"
@@ -18,12 +25,14 @@
                 @codeChange="onCodeChange"
             >
             </MonacoEditor>
-            <div>
+            <div class="btn-area">
                 <el-button
+                    class="btn"
                     type="primary"
                     @click="runCode"
                 >运行</el-button>
                 <el-button
+                    class="btn"
                     type="primary"
                     @click="clean"
                 >清空</el-button>
@@ -35,11 +44,13 @@
             ></div>
         </div>
 
-        商品展示
-        <el-button
-            type="primary"
-            @click="getList"
-        >获取商品展示列表</el-button>
+        <h3>功能案例</h3>
+        <div class="module-list">
+            <el-button
+                type="primary"
+                @click="getList"
+            >获取商品展示列表</el-button>
+        </div>
 
     </div>
 </template>
@@ -73,16 +84,22 @@ export default {
                 "function success (data) {",
                 "    print(data);",
                 "}",
+                "function error (data) {",
+                "    print('error');",
+                "    print(data);",
+                "}",
                 "function refreshTicket() {",
                 "    window.acgAppSdk.refreshTicket(",
                 "        null,",
                 "        {",
-                "            success: success",
+                "            success: success,",
+                "            error: error",
                 "        }",
                 "    )",
                 "}",
                 "refreshTicket();",
             ],
+            refreshTicketSync: [],
         };
     },
     created() {
@@ -91,18 +108,22 @@ export default {
     methods: {
         rewritePrint() {
             window.print = (data) => {
-                this.$refs.res.innerHTML =
+                this.$refs.res.innerHTML +=
                     typeof data === "object"
                         ? JSON.stringify(data, null, 4)
                         : data;
             };
         },
-        
+
         runCode() {
-            this.$refs.res.innerHTML = '运行中...'
+            this.$refs.res.innerHTML = "运行中...";
             let newCode = `${this.editor.getValue()}`;
-            let res = eval(newCode);
-            console.log(res)
+            try {
+                let res = eval(newCode);
+                console.log(res);
+            } catch (error) {
+                this.$refs.res.innerHTML = error.message;
+            }
         },
 
         clean() {
@@ -133,9 +154,19 @@ export default {
 </script>
 
 <style>
+* {
+    padding: 0;
+    margin: 0;
+}
+h3 {
+    margin-top: 20px;
+}
+.module-list {
+    margin: 10px 0;
+}
 .code-area {
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
 }
 .code {
     border: 1px solid black;
@@ -145,5 +176,15 @@ export default {
 }
 .res {
     overflow: scroll;
+}
+.btn-area {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+}
+.btn-area .btn {
+    width: 100%;
+    margin-left: 0 !important;
+    margin-bottom: 10px;
 }
 </style>
