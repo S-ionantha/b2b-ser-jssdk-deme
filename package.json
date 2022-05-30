@@ -8,7 +8,7 @@
         "dev": "nodemon",
         "start": "cross-env NODE_ENV=production node ./bin/www",
         "vue": "vue-cli-service serve",
-        "build": "vue-cli-service build"
+        "build": "./node_modules/.bin/vue-cli-service build"
     },
     "dependencies": {
         "axios": "^0.27.2",
