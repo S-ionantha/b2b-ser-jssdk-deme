@@ -103,6 +103,8 @@ h3 {
 }
 .good-list {
     display: flex;
+    flex-wrap: wrap;
+    height: 1200px;
 }
 
 .card {
