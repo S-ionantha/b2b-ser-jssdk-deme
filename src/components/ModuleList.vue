@@ -51,21 +51,22 @@ export default {
             } catch (error) {
                 data = error;
             }
+            
             let url = window.top.location.search || window.location.search;
 
             let params = new URLSearchParams(url.substring(1));
-            
+
+            console.log(params.get("env"));
+
             // https://app.ionantha.tech
-            let { data: list } = await axios(
-                {
-                    url: "/api/list",
-                    method: "get",
-                    params: {
-                        ticket: data.ticket,
-                        env: params.get('env')
-                    },
-                }
-            );
+            let { data: list } = await axios({
+                url: "/api/list",
+                method: "get",
+                params: {
+                    ticket: data.ticket,
+                    env: params.get("env"),
+                },
+            });
 
             this.goodList = list;
             console.log(list);
