@@ -50,11 +50,13 @@
 
 <script>
 import MonacoEditor from "vue-monaco-editor";
+import { ElButton } from "element-plus";
 
 export default {
     name: "CodeArea",
     components: {
         MonacoEditor,
+        ElButton,
     },
     data() {
         return {

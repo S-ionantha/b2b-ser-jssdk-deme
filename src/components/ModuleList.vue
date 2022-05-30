@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import { ElButton, ElCard } from "element-plus";
 import axios from "axios";
 export default {
     name: "ModuleList",
@@ -42,6 +43,10 @@ export default {
         return {
             goodList: [],
         };
+    },
+    components: {
+        ElButton,
+        ElCard,
     },
     methods: {
         async getList() {
@@ -51,7 +56,7 @@ export default {
             } catch (error) {
                 data = error;
             }
-            
+
             let url = window.top.location.search || window.location.search;
 
             let params = new URLSearchParams(url.substring(1));
