@@ -3,7 +3,6 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "preserve": "npm run build",
         "serve": "pm2 start pm2.json",
         "dev": "nodemon",
         "start": "cross-env NODE_ENV=production node ./bin/www",
