@@ -54,6 +54,7 @@ export default {
             let url = window.top.location.search || window.location.search;
 
             let params = new URLSearchParams(url.substring(1));
+            
             // https://app.ionantha.tech
             let { data: list } = await axios(
                 {
