@@ -7,7 +7,10 @@
                 @click="getList"
             >获取商品展示列表</el-button>
         </div>
-        <div class="good-list">
+        <div
+            v-if="goodList.length"
+            class="good-list"
+        >
             <template
                 v-for="item in goodList"
                 :key="item.id"
@@ -50,6 +53,7 @@ export default {
     },
     methods: {
         async getList() {
+            this.goodList = [];
             let data;
             try {
                 data = await window.acgAppSdk.refreshTicket();
@@ -78,8 +82,8 @@ export default {
             console.log(list, list.data.data.list);
         },
         go(data) {
-            window.open(data.pc_url)
-        }
+            window.open(data.pc_url);
+        },
     },
 };
 </script>
