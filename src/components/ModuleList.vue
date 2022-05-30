@@ -12,20 +12,19 @@
                 v-for="item in goodList"
                 :key="item.id"
             >
-                <el-card class="card" :body-style="{ padding: '0px' }">
+                <el-card
+                    class="card"
+                    :body-style="{ padding: '0px' }"
+                >
                     <img
                         :src="item.canonicalImage"
                         class="image"
                     />
-                    <div style="padding: 14px">
-                        <span>{{item.name}}</span>
-                        <div class="bottom">
-                            <time class="time">{{ currentDate }}</time>
-                            <el-button
-                                text
-                                class="button"
-                            >Operating</el-button>
+                    <div class="card-info">
+                        <div class="bottom-wrap">
+                            <span class="price-icon">￥</span><span class="price">{{ item.price[0].price }}</span><span class="sales-volume">&nbsp;/{{ item.price[0].unitCode }}</span>
                         </div>
+                        <div class="name">{{ item.name }}</div>
                     </div>
                 </el-card>
             </template>
@@ -57,10 +56,12 @@ export default {
                 data = error;
             }
 
-            let params = new URLSearchParams(window.location.search.substring(1));
+            let params = new URLSearchParams(
+                window.location.search.substring(1)
+            );
 
             console.log(params.get("env"));
-            let env = params.get("env") 
+            let env = params.get("env");
 
             // https://app.ionantha.tech
             let { data: list } = await axios({
@@ -102,11 +103,40 @@ h3 {
 }
 
 .card {
-    /* height: 255px;
-    width: ; */
+    width: 255px;
 }
 .card .image {
     height: 255px;
     width: 255px;
+}
+.card-info {
+    display: inline-block;
+    padding: 12px;
+    font-size: 14px;
+    color: #303133;
+    vertical-align: top;
+}
+.bottom-wrap {
+    color: #fd503e;
+    font-weight: 500;
+}
+.price {
+    font-size: 19px;
+}
+.sales-volume {
+    font-size: 14px;
+}
+.name {
+    font-weight: 500;
+    margin-top: 4px;
+    /* ellipsis-line(2) */
+    line-height: 22px;
+    font-size: 17px;
+    color: #1f1f1f;
+    overflow hidden
+    text-overflow ellipsis
+    display -webkit-box
+    -webkit-line-clamp line
+    -webkit-box-orient vertical
 }
 </style>
