@@ -20,3 +20,9 @@ export default {
     },
 };
 </script>
+
+<style>
+#app {
+    padding: 12px;
+}
+</style>
