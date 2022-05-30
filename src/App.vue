@@ -10,6 +10,10 @@
                 type="primary"
                 @click="resetEditor('refreshTicketSync')"
             >刷新ticket(同步)</el-button>
+            <el-button
+                type="primary"
+                @click="resetEditor('restartApp')"
+            >重启应用</el-button>
         </div>
 
         <div class="code-area">
@@ -113,6 +117,7 @@ export default {
                 "}",
                 "refreshTicket();",
             ],
+            restartApp: ["window.acgAppSdk.restartApp()"],
         };
     },
     created() {
