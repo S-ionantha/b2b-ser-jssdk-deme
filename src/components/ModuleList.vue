@@ -12,7 +12,7 @@
                 v-for="item in goodList"
                 :key="item.id"
             >
-                <el-card :body-style="{ padding: '0px' }">
+                <el-card class="card" :body-style="{ padding: '0px' }">
                     <img
                         :src="item.canonicalImage"
                         class="image"
@@ -99,5 +99,14 @@ h3 {
     width: 100%;
     margin-left: 0 !important;
     margin-bottom: 10px;
+}
+
+.card {
+    /* height: 255px;
+    width: ; */
+}
+.card .image {
+    height: 255px;
+    width: 255px;
 }
 </style>
