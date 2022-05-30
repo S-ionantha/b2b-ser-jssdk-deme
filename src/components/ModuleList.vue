@@ -57,7 +57,7 @@ export default {
                 data = error;
             }
 
-            let url = window.top.location.search || window.location.search;
+            let url = window.location.search;
 
             let params = new URLSearchParams(url.substring(1));
 
