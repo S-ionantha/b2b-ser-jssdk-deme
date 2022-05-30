@@ -78,7 +78,7 @@ export default {
                 },
             });
 
-            this.goodList = list.data.data.list;
+            this.goodList = list.data.data.list || [];
             console.log(list, list.data.data.list);
         },
         go(data) {
