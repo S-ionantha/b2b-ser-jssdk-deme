@@ -15,6 +15,7 @@
                 <el-card
                     class="card"
                     :body-style="{ padding: '0px' }"
+                    @click="go(item)"
                 >
                     <img
                         :src="item.canonicalImage"
@@ -22,7 +23,7 @@
                     />
                     <div class="card-info">
                         <div class="bottom-wrap">
-                            <span class="price-icon">￥</span><span class="price">{{ item.price[0].price }}</span><span class="sales-volume">&nbsp;/{{ item.price[0].unitCode }}</span>
+                            <span class="price-icon">￥</span><span class="price">{{ item.price[0]?.price }}</span><span class="sales-volume">&nbsp;/{{ item.price[0]?.unitCode }}</span>
                         </div>
                         <div class="name">{{ item.name }}</div>
                     </div>
@@ -76,6 +77,9 @@ export default {
             this.goodList = list.data.data.list;
             console.log(list, list.data.data.list);
         },
+        go(data) {
+            window.open(data.pc_url)
+        }
     },
 };
 </script>
@@ -109,6 +113,7 @@ h3 {
 
 .card {
     width: 255px;
+    height: 360px;
     margin-left: 10px;
     margin-bottom: 10px;
 }
