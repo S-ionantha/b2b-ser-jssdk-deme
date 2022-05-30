@@ -115,6 +115,9 @@ export default {
     methods: {
         rewritePrint() {
             window.print = (data) => {
+                if (this.$refs.res.innerHTML === "运行中...") {
+                    this.$refs.res.innerHTML = "";
+                }
                 this.$refs.res.innerHTML +=
                     typeof data === "object"
                         ? JSON.stringify(data, null, 4)
@@ -152,7 +155,7 @@ export default {
         },
 
         async getList() {
-            let { data } = await window.acgAppSdk.refreshTicket();
+            let data = await window.acgAppSdk.refreshTicket();
             console.log(data);
             // https://app.ionantha.tech
             let { data: list } = await axios.get(
