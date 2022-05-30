@@ -152,6 +152,7 @@ h3 {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
+    word-break: break-all;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
