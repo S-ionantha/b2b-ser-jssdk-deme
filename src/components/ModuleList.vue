@@ -101,9 +101,14 @@ h3 {
     margin-left: 0 !important;
     margin-bottom: 10px;
 }
+.good-list {
+    display: flex;
+}
 
 .card {
     width: 255px;
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
 .card .image {
     height: 255px;
