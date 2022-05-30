@@ -57,6 +57,8 @@ export default {
                 data = error;
             }
 
+            console.log(document.referrer)
+            
             let url = window.location.search;
 
             let params = new URLSearchParams(url.substring(1));
