@@ -25,7 +25,7 @@ export default {
 #app {
     padding: 12px;
     display: flex;
-    align-items: center;
+    justify-content: center;
 }
 .container {
     max-width: 1200px;
