@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <code-area>
         </code-area>
         <module-list>
@@ -24,5 +24,10 @@ export default {
 <style>
 #app {
     padding: 12px;
+    display: flex;
+    align-items: center;
+}
+.container {
+    max-width: 1200px;
 }
 </style>
