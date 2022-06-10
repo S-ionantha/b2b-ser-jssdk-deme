@@ -28,6 +28,12 @@ router.get('/list', async (req, res) => {
     console.log(query.env);
     // rest/2.0/b2b_tp/offline/goods/list
     // rest/2.0/b2b_tp/goods/list
+    let url = `https://openapi.baidu.com/rest/2.0/b2b_tp/${
+        query.env ? 'offline/' : ''
+    }goods/list?app_id=172&access_token=${access_token}&ticket=${
+        query.ticket
+    }`
+    console.log(url)
     let {data: list} = await axios.get(
         `https://openapi.baidu.com/rest/2.0/b2b_tp/${
             query.env ? 'offline/' : ''
